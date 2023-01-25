@@ -1,0 +1,22 @@
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2F3061;
+  color: white;
+}
+
+main{
+  flex-grow: 1;
+}
+
+.cart{
+  background-color: #A7B0CA;
+  min-height: calc(100vh - 196px);
+}
