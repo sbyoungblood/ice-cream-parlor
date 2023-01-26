@@ -48,9 +48,12 @@
       <div class="row">
         <div class="col-md-7 store">
           <div class="row" id="product-cards">
+            <!-- TEMPLATE REFERENCE -->
             <div class="col-md-6 col-lg-4 my-3">
               <div class="card product-card">
-                <img src="//via.placeholder.com/150" alt="">
+                <img class="store-card-img rounded-top"
+                  src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/ultimate-vanilla-ice-cream-1628511695.jpg"
+                  alt="">
                 <div class="card-body">
                   <div class="d-flex align-items-center justify-content-between">
                     <p><b>product name</b></p>
@@ -65,8 +68,18 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 cart">
-          cart
+        <div class="col-md-5 d-flex align-items-center justify-content-center cart">
+          <div class="row" id="cart">
+            <div class="col-12 d-flex justify-content-center align-content-center display-3">
+              🍦 🍦 🍦
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="display-6">Total: $<span id="cart-total"></span></div>
+              <div><button class="btn btn-outline-dark mdi mdi-cart">CHECKOUT</button></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

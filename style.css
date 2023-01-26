@@ -20,3 +20,9 @@ main{
   background-color: #A7B0CA;
   min-height: calc(100vh - 196px);
 }
+
+.store-card-img{
+  min-height: 205px;
+  min-width: 205px;
+  object-fit: cover;
+}
