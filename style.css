@@ -22,7 +22,7 @@ main{
 }
 
 .store-card-img{
-  min-height: 205px;
+  height: 205px;
   min-width: 205px;
   object-fit: cover;
 }
