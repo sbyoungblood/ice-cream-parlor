@@ -41,7 +41,7 @@ let cart = []
 // SECTION DRAW FUNCTIONS
 
 function drawFlavors(){
-  let storeElem = document.getElementById('flavors-cards')
+  let flavorsElem = document.getElementById('flavors-cards')
   let template = ''
 
   for (let i = 0; i < flavors.length; i++) {
@@ -58,18 +58,18 @@ function drawFlavors(){
         </div>
         <div class="add-item-btn d-flex justify-content-center align-items-center">
           <button class="btn btn-outline-dark mdi mdi-cart d-flex align-items-center" title="Add to cart"
-            onclick="addItemToCart('sku')"><small>ADD</small></button>
+            onclick="addFlavorToCart('${product.name}')"><small>ADD</small></button>
         </div>
       </div>
     </div>
   </div>
   `
   }
-  storeElem.innerHTML = template
+  flavorsElem.innerHTML = template
 }
 
 function drawToppings(){
-  let storeElem = document.getElementById('toppings-cards')
+  let toppingsElem = document.getElementById('toppings-cards')
   let template = ''
 
   for (let i = 0; i < toppings.length; i++) {
@@ -86,17 +86,17 @@ function drawToppings(){
         </div>
         <div class="add-item-btn d-flex justify-content-center align-items-center">
           <button class="btn btn-outline-dark mdi mdi-cart d-flex align-items-center" title="Add to cart"
-            onclick="addItemToCart('sku')"><small>ADD</small></button>
+            onclick="addToppingsToCart('${product.name}')"><small>ADD</small></button>
         </div>
       </div>
     </div>
   </div>
   `
   }
-storeElem.innerHTML = template
+toppingsElem.innerHTML = template
 }
 function drawContainers(){
-  let storeElem = document.getElementById('containers-cards')
+  let containersElem = document.getElementById('containers-cards')
   let template = ''
 
   for (let i = 0; i < containers.length; i++) {
@@ -113,14 +113,14 @@ function drawContainers(){
         </div>
         <div class="add-item-btn d-flex justify-content-center align-items-center">
           <button class="btn btn-outline-dark mdi mdi-cart d-flex align-items-center" title="Add to cart"
-            onclick="addItemToCart('sku')"><small>ADD</small></button>
+            onclick="addContainersToCart('${product.name}')"><small>ADD</small></button>
         </div>
       </div>
     </div>
   </div>
   `
   }
-storeElem.innerHTML = template
+containersElem.innerHTML = template
 }
 
 function drawStore(){
@@ -129,10 +129,117 @@ function drawStore(){
   drawContainers()
 }
 
+function drawCart(){
+  let cartElem = document.getElementById('cart')
+  let cartTotalElem = document.getElementById('cart-total')
+  let template = ''
+
+  cart.forEach(product => {
+    template += `<div>${product.name} - ${product.quantity}</div>
+    `
+  })
+  cartElem.innerHTML = template
+}
+
 
 
 // SECTION ADD, REMOVE, TOTAL
 
+function addFlavorToCart(name){
+  let addFlavor = flavors.find(p => p.name == name)
+  let productFoundInCart = cart.find(p => p.name == name)
+
+  if(productFoundInCart){
+    productFoundInCart.quantity++
+  }else{
+    cart.push({
+      name: addFlavor.name,
+      price: addFlavor.price,
+      img: addFlavor.image,
+      quantity: 1
+    })
+  }
+  drawCart()
+}
+function addToppingsToCart(name){
+  let addToppings = toppings.find(p => p.name == name)
+  let productFoundInCart = cart.find(p => p.name == name)
+
+  if(productFoundInCart){
+    productFoundInCart.quantity++
+  }else{
+    cart.push({
+      name: addToppings.name,
+      price: addToppings.price,
+      img: addToppings.image,
+      quantity: 1
+    })
+  }
+  drawCart()
+}
+function addContainersToCart(name){
+  let addContainers = containers.find(p => p.name == name)
+  let productFoundInCart = cart.find(p => p.name == name)
+
+  if(productFoundInCart){
+    productFoundInCart.quantity++
+  }else{
+    cart.push({
+      name: addContainers.name,
+      price: addContainers.price,
+      img: addContainers.image,
+      quantity: 1
+    })
+  }
+  drawCart()
+}
+
+
+// TODO
+// function addToCart (){
+//   addFlavorToCart()
+//   addToppingsToCart()
+//   addContainersToCart()
+//   drawCart()
+// }
+
+
+
+
+
+// function addItemToCart(name){
+//   let addFlavor = flavors.find(p => p.name == name)
+//   let addToppings = toppings.find(p => p.name == name)
+//   let addContainers = containers.find(p => p.name == name)
+
+//   let productFoundInCart = cart.find(p => p.name == name)
+
+//   if(productFoundInCart){
+//     productFoundInCart.quantity++
+//   }else{
+//     cart.push({
+//       name: addFlavor.name,
+//       price: addFlavor.price,
+//       img: addFlavor.image,
+//       quantity: 1
+//     })
+//   }else{
+//     cart.push({
+//       name: addToppings.name,
+//       price: addToppings.price,
+//       img: addToppings.image,
+//       quantity: 1
+//     })
+//   }else{
+//     cart.push({
+//       name: addContainers.name,
+//       price: addContainers.price,
+//       img: addContainers.image,
+//       quantity: 1
+//     })
+//   }
+//   drawCart()
+// }
 
 // SECTION INITIALIZERS
 
